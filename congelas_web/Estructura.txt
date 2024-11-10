@@ -1,0 +1,78 @@
+placeitnow_project/
+├── manage.py
+├── placeitnow/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+├── products/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── orders/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── customers/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── blog/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── faqs/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── contact/
+│   ├── migrations/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+└── templates/
+    ├── base.html
+    ├── products/
+    │   ├── product_list.html
+    │   └── product_detail.html
+    ├── orders/
+    │   ├── order_list.html
+    │   └── order_detail.html
+    ├── customers/
+    │   ├── customer_list.html
+    │   └── customer_detail.html
+    ├── blog/
+    │   ├── blog_list.html
+    │   └── blog_detail.html
+    ├── faqs/
+    │   └── faq_list.html
+    ├── contact/
+    │   └── contact_form.html
+    └── includes/
+        └── header.html
+        └── footer.html
+

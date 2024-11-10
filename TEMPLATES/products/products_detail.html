@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- templates/productos/producto_detail.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ producto.nombre }} - Detalles</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #007600;
+        }
+
+        /* Contenedor principal del producto */
+        .producto-detalle {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para la imagen del producto */
+        .producto-imagen {
+            flex-basis: 40%;
+            text-align: center;
+        }
+
+        .producto-imagen img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px; /* Espacio entre imágenes */
+        }
+
+        /* Información del producto */
+        .producto-info {
+            flex-basis: 55%;
+        }
+
+        .producto-info h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #007600;
+        }
+
+        .producto-info p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.5; /* Mejora la legibilidad */
+        }
+
+        .producto-precio {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #b12704;
+        }
+
+        /* Botón de regresar */
+        .boton-volver {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007600; /* Color verde */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-volver:hover {
+            background-color: #005900; /* Verde más oscuro en hover */
+        }
+
+        /* Botón "Añadir al carrito" */
+        .boton-carrito {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #28a745; /* Color verde */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer; /* Cambio de cursor para indicar clickeable */
+            transition: background-color 0.3s ease;
+        }
+
+        .boton-carrito:hover {
+            background-color: #218838; /* Verde más oscuro en hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ producto.nombre }}</h1>
+
+    <div class="producto-detalle">
+        <div class="producto-imagen">
+            {% for imagen in imagenes %}
+                <img src="{{ imagen.imagen.url }}" alt="{{ producto.nombre }}">
+            {% empty %}
+                <img src="/static/images/default-product.jpg" alt="Imagen no disponible">
+            {% endfor %}
+        </div>
+
+        <div class="producto-info">
+            <h2>Descripción</h2>
+            <p>{{ producto.descripcion|linebreaks }}</p> <!-- Usa linebreaks para saltos de línea -->
+            <p class="producto-precio">Precio: ${{ producto.precio }}</p>
+
+            <!-- Botón para añadir al carrito -->
+            <form action="{% url 'add_to_cart' producto.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="boton-carrito">Añadir al carrito</button>
+            </form>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'products_list' %}" class="boton-volver">Volver a la lista de productos</a>
+    </div>
+
+</body>
+</html>
+{% endblock content %}

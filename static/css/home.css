@@ -1,0 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: calc(100vh - 60px); /* Ajusta la altura del contenedor principal */
+    /* Resta el tamaño aproximado del footer (60px) */
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congelas - Delicias Con-geladas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <link href="{% static 'images/logo_negro.png' %}" rel="icon">
+    <style>
+        html, body {
+            height: 100%; /* Asegura que el html y body ocupen toda la altura */
+            margin: 0; /* Elimina márgenes por defecto */
+            display: flex; /* Usar Flexbox */
+            flex-direction: column; /* Apilar elementos en columna */
+        }
+        body {
+            background-color: #ffffff; /* Fondo blanco */
+            color: #333; /* Texto en color oscuro */
+            font-family: 'Times New Roman', Times, serif; /* Tipografía Times New Roman */
+        }
+        .navbar {
+            background-color: #ffffff; /* Fondo blanco para la navbar */
+            border-bottom: 2px solid #5cc880; /* Línea delgada verde */
+        }
+        .navbar a {
+            color: #333; /* Cambia el color de los enlaces a oscuro */
+        }
+        .navbar-brand b {
+            color: #5cc880; /* Color verde del nombre de la marca */
+        }
+        .footer {
+            background-color: #333; /* Fondo negro */
+            color: #ffffff; /* Texto en blanco */
+            padding: 10px 0;
+            margin-top: auto; /* Empuja el footer hacia abajo */
+            position: relative; /* Posicionamiento relativo */
+            clear: both; /* Asegura que no se superponga al contenido */
+        }
+        .footer a {
+            color: #5cc880; /* Enlaces en verde */
+        }
+        .btn-primary {
+            background-color: #5cc880; /* Botones en verde */
+            border: none; /* Sin borde */
+        }
+        .btn-primary:hover {
+            background-color: #4a9f67; /* Verde más oscuro al pasar el ratón */
+        }
+        .logo {
+            height: 60px; /* Altura del logo */
+            margin-right: 10px; /* Espaciado entre el logo y el texto */
+        }
+        main {
+            flex: 1; /* Permite que el main ocupe el espacio restante */
+            padding-bottom: 60px; /* Espacio adicional para evitar que el contenido choque con el pie de página */
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo sin fondo.png' %}" alt="Logo Congelas" class="logo">
+                <b>Congelas</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products_list' %}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'sobre_nosotros' %}">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'preguntas_frecuentes' %} ">Preguntas Frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart_detail' %}">Ver Carrito</a> <!-- Enlace para ver el carrito -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main role="main" class="container mt-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 Congelas - Todos los derechos reservados.</p>
+            <p><a href="">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

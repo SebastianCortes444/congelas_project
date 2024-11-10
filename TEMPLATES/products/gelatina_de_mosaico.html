@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Gelatina de Mosaico</h1>
+        <img src="{% static 'images/gelatinas_de_mosaico/mosaico1.jpeg' %}" class="img-fluid" alt="Gelatina de Mosaico" style="max-width: 400px;">
+    </header>
+
+    <section class="text-center mb-5">
+        <h2>Descripción del Producto</h2>
+        <p>Disfruta de nuestra colorida gelatina de mosaico, un postre visualmente atractivo y deliciosamente refrescante. Ideal para cualquier celebración, nuestra gelatina de mosaico es una opción que encantará a grandes y pequeños.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Por qué Elegir Nuestra Gelatina de Mosaico?</h2>
+        <p>En Congelas, ofrecemos una gelatina de mosaico de calidad excepcional. Preparada con ingredientes frescos y sabores irresistibles, garantiza la satisfacción de tus clientes en cada bocado.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Galería de Imágenes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mosaico/mosaico1.jpeg' %}" class="img-fluid mb-2"  width="200" alt="Gelatina de Mosaico en presentación 1">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mosaico/mosaico2.jpeg' %}" class="img-fluid mb-2" width="250" alt="Gelatina de Mosaico en presentación 2">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mosaico/mosaico3.jpeg' %}" class="img-fluid mb-2" width="250" alt="Gelatina de Mosaico en presentación 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Opiniones de Nuestros Clientes</h2>
+        <blockquote class="blockquote">
+            <p>"La gelatina de mosaico de Congelas es un espectáculo en cada fiesta. ¡La amo!"</p>
+            <footer class="blockquote-footer">María López, Cliente Satisfecha</footer>
+        </blockquote>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Listo para pedir?</h2>
+        <p>¡No te quedes sin probarla! Contacta con nosotros para realizar tu pedido y sorprende a tus clientes con nuestra deliciosa gelatina de mosaico.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-primary">Contáctanos</a>
+    </section>
+</div>
+{% endblock %}

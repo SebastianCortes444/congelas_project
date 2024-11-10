@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4" style="color: #007bff;">Carrito de Compras</h2> <!-- Color de Marca -->
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark" style="background-color: #343a40;"> <!-- Color de fondo del encabezado -->
+            <tr>
+                <th scope="col" style="color: #ffffff;">Imagen</th>
+                <th scope="col" style="color: #ffffff;">Nombre</th>
+                <th scope="col" style="color: #ffffff;">Cantidad</th>
+                <th scope="col" style="color: #ffffff;">Precio</th>
+                <th scope="col" style="color: #ffffff;">Total</th>
+                <th scope="col" style="color: #ffffff;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in carrito %}
+            <tr>
+                <td>
+                    {% if item.producto.imagenes.first %}
+                        <img src="{{ item.producto.imagenes.first.imagen.url }}"
+                             alt="{{ item.producto.nombre }}"
+                             width="80" height="auto" class="img-fluid rounded">
+                    {% else %}
+                        <img src="{% static 'images/default-product.jpg' %}" alt="Imagen no disponible"
+                             width="80" height="auto" class="img-fluid rounded">
+                    {% endif %}
+                </td>
+                <td>{{ item.producto.nombre }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td style="color: #28a745;">${{ item.precio|floatformat:2 }}</td> <!-- Color para precios -->
+                <td style="color: #28a745;">${{ item.total|floatformat:2 }}</td> <!-- Color para totales -->
+                <td>
+                    <form action="{% url 'eliminar_del_carrito' item.producto.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No hay productos en el carrito.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if carrito %}
+        <div class="text-end">
+            <a href="" class="btn" style="background-color: #007bff; color: #ffffff;">Proceder a la compra</a> <!-- Botón de compra con color de marca -->
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

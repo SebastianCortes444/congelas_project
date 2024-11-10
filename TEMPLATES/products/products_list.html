@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos - Congelas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Barra de búsqueda */
+        .barra-busqueda {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .barra-busqueda input {
+            width: 80%;
+            max-width: 400px;
+            padding: 12px;
+            border: 2px solid #28a745; /* Color verde del negocio */
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .barra-busqueda input:focus {
+            border-color: #007bff; /* Color azul al enfocarse */
+        }
+
+        /* Estilos para la cuadrícula de productos */
+        .productos-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .producto-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .producto-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Imagen del producto */
+        .producto-item img {
+            width: 100%;
+            height: 300px; /* Ajusta el tamaño según tu preferencia */
+            object-fit: cover;
+            border-bottom: 3px solid #28a745; /* Color verde del negocio */
+        }
+
+        /* Información del producto */
+        .producto-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .producto-info h2 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .producto-info p {
+            margin: 5px 0;
+            color: #777;
+        }
+
+        .producto-precio {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #28a745;
+        }
+
+        /* Botón "Añadir al carrito" */
+        .boton-carrito {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #28a745; /* Color verde del negocio */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .boton-carrito:hover {
+            background-color: #218838; /* Color verde más oscuro */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lista de Productos</h1>
+
+    <!-- Barra de búsqueda -->
+    <div class="barra-busqueda">
+        <input type="text" placeholder="Buscar productos..." id="busqueda">
+    </div>
+
+    <ul class="productos-lista">
+        {% for producto in productos %}
+        <li class="producto-item">
+            {% if producto.imagenes.first %}
+            <img src="{{ producto.imagenes.first.imagen.url }}" alt="{{ producto.nombre }}">
+            {% else %}
+            <img src="{% static 'images/default-product.jpg' %}" alt="Imagen no disponible">
+            {% endif %}
+            <div class="producto-info">
+                <h2><a href="{% url 'products_detail' producto.pk %}" style="text-decoration: none; color: #28a745;">{{ producto.nombre }}</a></h2>
+                <p>{{ producto.descripcion|truncatewords:10 }}</p>  <!-- Descripción más corta -->
+                <p class="producto-precio">Precio: ${{ producto.precio }}</p>
+                <!-- Botón para añadir al carrito -->
+                <form action="{% url 'add_to_cart' producto.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="boton-carrito">Añadir al carrito</button>
+                </form>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
+{% endblock content %}

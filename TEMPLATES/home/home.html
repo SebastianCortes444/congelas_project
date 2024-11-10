@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    {% load static %}
+    .img-uniforme {
+        height: 400px; /* Ajusta esta altura según prefieras */
+        object-fit: cover;
+        width: 100%; /* Asegura que la imagen abarque el ancho completo del contenedor */
+    }
+</style>
+<div class="container">
+    <header class="text-center mt-5 mb-5">
+        <h1>Bienvenido a Congelas</h1>
+        <p>Delicias con-geladas para restaurantes, tiendas y eventos.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-secondary">Contáctanos</a>
+    </header>
+
+    <section class="text-center mb-5">
+        <h2>Nuestros Productos Destacados</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'images/gelatinas_de_mosaico/mosaico1.jpeg' %}" class="card-img-top img-uniforme" alt="Gelatina de Mosaico">
+                    <div class="card-body">
+                        <h5 class="card-title">Gelatina de Mosaico</h5>
+                        <p class="card-text">Una deliciosa combinación de sabores y colores.</p>
+                        <a href="{% url 'gelatina_de_mosaico' %}" class="btn btn-primary">Ver Más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'images/flanes/flan1.jpeg' %}" class="card-img-top img-uniforme" alt="Flan">
+                    <div class="card-body">
+                        <h5 class="card-title">Flan</h5>
+                        <p class="card-text">El clásico flan que siempre encanta.</p>
+                        <a href="{% url 'flan' %}" class="btn btn-primary">Ver Más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{% static 'images/gelatinas_de_mostrador/gt0.jpeg' %}" class="card-img-top img-uniforme" alt="Gelatina de Mostrador">
+                    <div class="card-body">
+                        <h5 class="card-title">Gelatina de Mostrador</h5>
+                        <p class="card-text">Ideal para cualquier ocasión, colorida y refrescante.</p>
+                        <a href="{% url 'gelatinas_de_mostrador' %}" class="btn btn-primary">Ver Más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Por qué Elegirnos?</h2>
+        <p>Ofrecemos productos de la más alta calidad, perfectos para satisfacer a tus clientes. Ya sea en restaurantes, tiendas o eventos, nuestras gelatinas son la opción ideal.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Sobre Nosotros</h2>
+        <p>Ubicados en Guadalajara, Jalisco, somos proveedores de más de 200 tiendas de abarrotes. En Congelas, nos enorgullece ofrecer productos de gelatina que destacan por su calidad y sabor. Nuestra misión es brindar delicias congeladas que alegren cada evento y realcen la experiencia gastronómica de nuestros clientes.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Galería de Imágenes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mostrador/gt2.jpeg' %}" class="img-fluid img-uniforme" alt="Gelatina en Evento">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/flanes/flan2.jpeg' %}" class="img-fluid img-uniforme" alt="Gelatina en Evento">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mostrador/gt3.jpeg' %}" class="img-fluid img-uniforme" alt="Gelatina en Evento">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="text-center mb-5">
+        <h2>Contáctanos</h2>
+        <p>Estamos aquí para ayudarte. Puedes comunicarte con nosotros a través de los siguientes medios:</p>
+        <div>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/523315037374" target="_blank">+52 33 15 03 73 74</a></p>
+            <p><strong>Teléfono:</strong> <a href="tel:+523315037374">+52 33 15 03 73 74</a></p>
+            <p><strong>Facebook:</strong> <a href="https://web.facebook.com/profile.php?id=61565591650050&locale=es_LA" target="_blank">Congelas</a></p>
+            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/congelas_gelatinas/" target="_blank">Congelas</a></p>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">¡Gracias por contactarnos!</h1>
+    <p class="lead">En <strong>Congelas</strong>, estamos encantados de saber de ti.</p>
+    <p>
+        Hemos recibido tu mensaje y en poco tiempo nos pondremos en contacto contigo para atender todas tus inquietudes.
+        Queremos asegurarnos de brindarte la mejor atención posible y hacer de cada momento, un momento memorable con nuestras delicias congeladas.
+    </p>
+    <p>
+        Mientras tanto, si deseas saber más sobre nuestros productos o servicios, no dudes en visitar nuestras
+        <a href="">gelatinas</a> o
+        <a href="">servicios para eventos</a>.
+    </p>
+    <p>
+        ¡Gracias por elegir <strong>Congelas</strong>! Nos aseguraremos de hacer que cada momento sea especial.
+    </p>
+    <a href="{% url 'home' %}" class="btn btn-primary mt-4">Volver al Inicio</a>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Flan</h1>
+        <img src="{% static 'images/flanes/flan1.jpeg' %}" class="img-fluid" alt="Flan" style="max-width: 400px;">
+    </header>
+
+    <section class="text-center mb-5">
+        <h2>Descripción del Producto</h2>
+        <p>Disfruta de nuestro delicioso flan, un clásico que nunca falla. Su textura cremosa y su exquisito sabor lo convierten en el postre perfecto para cualquier ocasión. Ideal para restaurantes, tiendas y eventos, nuestro flan es la elección que encantará a tus clientes.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Por qué Elegir Nuestro Flan?</h2>
+        <p>En Congelas, nos enorgullece ofrecer un flan de calidad superior. Perfecto para deleitar a tus clientes, nuestro flan es elaborado con los mejores estándares, garantizando frescura y un sabor excepcional en cada bocado.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Galería de Imágenes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/flanes/flan1.jpeg' %}" class="img-fluid mb-2" alt="Flan en presentación 1">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/flanes/flan2.jpeg' %}" class="img-fluid mb-2" alt="Flan en presentación 2">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/flanes/flan3.jpeg' %}" class="img-fluid mb-2" alt="Flan en presentación 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Opiniones de Nuestros Clientes</h2>
+        <blockquote class="blockquote">
+            <p>"El flan de Congelas es simplemente irresistible. Siempre lo tengo en mi menú!"</p>
+            <footer class="blockquote-footer">José Pérez, Restaurantero</footer>
+        </blockquote>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Listo para pedir?</h2>
+        <p>¡No esperes más! Contacta con nosotros para hacer tu pedido y deleitar a tus clientes con el mejor flan del mercado.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-primary">Contáctanos</a>
+    </section>
+</div>
+{% endblock %}

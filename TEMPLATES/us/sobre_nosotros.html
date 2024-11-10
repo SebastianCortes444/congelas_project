@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Sobre Nosotros</h1>
+        <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="Nuestro Equipo" style="max-width: 200px;">
+    </header>
+
+    <section class="text-center mb-5">
+        <h2>Nuestra Historia</h2>
+        <p>Fundada en Guadalajara, Jalisco, Congelas ha crecido de manera significativa desde su inicio. Con una pasión por ofrecer gelatinas de calidad, nos hemos convertido en un referente en el mercado de postres en la región. Nuestro compromiso con la frescura y la satisfacción del cliente nos ha permitido ganar la confianza de más de 100 tiendas de abarrotes y 30 restaurantes, así como ser parte de celebraciones en numerosas familias.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Nuestro Equipo</h2>
+        <p>El éxito de Congelas no sería posible sin el esfuerzo y la dedicación de nuestro talentoso equipo. Conoce a algunos de los integrantes clave:</p>
+        <ul class="list-unstyled">
+            <li><strong>Sebastián Cortés</strong> - CEO</li>
+            <li><strong>María Elena Ruiz</strong> - Directora de Marketing</li>
+            <li><strong>Jesús Osvaldo Flores</strong> - Jefe de Producción</li>
+            <li><strong>Claudia Martínez</strong> - Gerente de Ventas</li>
+            <li><strong>Javier Morales</strong> - Coordinador de Eventos</li>
+        </ul>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Nuestra Misión</h2>
+        <p>En Congelas, nos esforzamos por ofrecer productos de la más alta calidad que deleiten a nuestros clientes. Nuestro objetivo es innovar constantemente y satisfacer las necesidades de nuestro mercado, asegurando siempre la frescura y el mejor sabor en cada uno de nuestros productos.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Nuestra Visión</h2>
+        <p>Aspiramos a ser líderes en el mercado de postres en México, expandiendo nuestra presencia y llevando nuestras gelatinas a más familias y negocios, creando momentos memorables a través de nuestros productos.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¡Contáctanos!</h2>
+        <p>Si deseas saber más sobre nosotros o nuestros productos, no dudes en <a href="{% url 'contacto' %}">contactarnos</a>. Estaremos encantados de atenderte.</p>
+    </section>
+</div>
+{% endblock %}

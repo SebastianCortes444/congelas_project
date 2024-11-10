@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Gelatinas de Mostrador</h1>
+        <img src="{% static 'images/gelatinas_de_mostrador/gt0.jpeg' %}" class="img-fluid" alt="Gelatinas de Mostrador" style="max-width: 400px;">
+    </header>
+
+    <section class="text-center mb-5">
+        <h2>Descripción del Producto</h2>
+        <p>Nuestras gelatinas de mostrador son el snack perfecto para cualquier momento. Fáciles de servir y siempre frescas, nuestras gelatinas vienen en una variedad de sabores que seguro deleitarán a tus clientes. Ideales para tiendas, restaurantes o cualquier evento.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Por qué Elegir Nuestras Gelatinas de Mostrador?</h2>
+        <p>En Congelas, ofrecemos gelatinas de mostrador elaboradas con ingredientes de alta calidad. Su presentación individual las hace prácticas y convenientes, garantizando siempre un sabor fresco y delicioso. Perfectas para sorprender a tus clientes.</p>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Galería de Imágenes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mostrador/gt0.jpeg' %}" class="img-fluid mb-2" alt="Gelatina en presentación 1">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mostrador/gt2.jpeg' %}" class="img-fluid mb-2" alt="Gelatina en presentación 2">
+            </div>
+            <div class="col-md-4">
+                <img src="{% static 'images/gelatinas_de_mostrador/gt3.jpeg' %}" class="img-fluid mb-2" alt="Gelatina en presentación 3">
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>Opiniones de Nuestros Clientes</h2>
+        <blockquote class="blockquote">
+            <p>"Las gelatinas de mostrador de Congelas son siempre un éxito. A mis clientes les encantan, y son muy fáciles de servir."</p>
+            <footer class="blockquote-footer">Ana López, Dueña de Tienda</footer>
+        </blockquote>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2>¿Interesado en nuestras Gelatinas de Mostrador?</h2>
+        <p>¡Nos encantaría saber de ti! Contáctanos para más información sobre nuestras gelatinas de mostrador y cómo podemos ayudarte a ofrecer a tus clientes una experiencia dulce y refrescante.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-primary">Contáctanos</a>
+    </section>
+</div>
+{% endblock %}

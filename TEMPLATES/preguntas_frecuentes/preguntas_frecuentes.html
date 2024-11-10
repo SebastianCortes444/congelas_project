@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Congelas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #28a745; /* Color verde del negocio */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #218838; /* Color verde más oscuro */
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .faq-question.active + .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Preguntas Frecuentes</h1>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Qué tipos de gelatinas ofrecen?</div>
+            <div class="faq-answer">Ofrecemos gelatinas de mostrador, gelatinas de mosaico y flanes, en diversos sabores deliciosos.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Cómo puedo realizar un pedido?</div>
+            <div class="faq-answer">Puedes realizar tu pedido a través de nuestra página web o contactándonos directamente por whatsapp o teléfono.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Hacen envíos a domicilio?</div>
+            <div class="faq-answer">Sí, ofrecemos servicio de entrega a domicilio en Guadalajara. Consulta nuestras condiciones de envío.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Qué ingredientes utilizan?</div>
+            <div class="faq-answer">Utilizamos ingredientes de alta calidad, incluyendo gelatinas de marca reconocida, frutas frescas y sabores naturales.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Ofrecen gelatinas personalizadas?</div>
+            <div class="faq-answer">No ofrecemos gelatinas personalizadas. Sin embargo, tenemos una amplia variedad de sabores y presentaciones que se adaptan a diferentes gustos y ocasiones.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Son ustedes proveedores de tiendas y restaurantes?</div>
+            <div class="faq-answer">Sí, somos proveedores de tiendas y restaurantes. Nos dedicamos a ofrecer gelatinas de alta calidad que pueden ser una excelente adición a su menú o estanterías.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">¿Sus productos son a consignación?</div>
+            <div class="faq-answer">Algunos de nuestros productos son a consignación, mientras que otros se ofrecen a cambio. Lo mejor es que el riesgo de perder es 0, lo que garantiza que pueda probar nuestros productos sin compromiso.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(question) {
+            question.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
+{% endblock content %}
