@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c44fe215-9a35-483d-8a49-450084b88da3" name="Changes" comment="Merge branch 'master' of https://github.com/SebastianCortes444/congelas" />
+    <list default="true" id="c44fe215-9a35-483d-8a49-450084b88da3" name="Changes" comment="Merge branch 'master' of https://github.com/SebastianCortes444/congelas">
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/cliente_confirm_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/cliente_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/cliente_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/cliente_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/pedido_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/pedido_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/pedido_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/clientes/pedido_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TEMPLATES/registration/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clientes/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clientes/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>

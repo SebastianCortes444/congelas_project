@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pedidos</title>
+</head>
+<body>
+    <h1>Lista de Pedidos</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>
+                <strong>Cliente:</strong> {{ pedido.cliente.nombre }} <br>  <!-- Mostrar el nombre del cliente -->
+                <strong>Producto:</strong> {{ pedido.producto.nombre }} <br>
+                <strong>Cantidad:</strong> {{ pedido.cantidad }} <br>
+                <strong>Precio Unitario:</strong> ${{ pedido.precio_unitario }} <br>
+                <strong>Total:</strong> ${{ pedido.total }} <br>
+                <strong>Fecha de Pedido:</strong> {{ pedido.fecha_pedido|date:"d/m/Y H:i" }} <br> <!-- Formato de fecha -->
+            </li>
+        {% empty %}
+            <li>No hay pedidos disponibles.</li>  <!-- Si no hay pedidos -->
+        {% endfor %}
+    </ul>
+    <a href="{% url 'pedido_create' %}">Agregar Pedido</a> |
+    <a href="{% url 'cliente_list' %}">Volver a la lista de clientes</a>
+</body>
+</html>
+{% endblock content %}

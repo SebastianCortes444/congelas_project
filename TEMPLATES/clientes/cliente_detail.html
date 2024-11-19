@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn-back {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background-color: #e67e22;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        li a:hover {
+            color: #45a049;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .actions a {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p><strong>Bienvenido:</strong> {{ user.username }}</p>
+    </header>
+
+    <h1>Detalle del Cliente</h1>
+
+    <div class="cliente-info">
+        <p><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+        <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+        <p><strong>Email:</strong> {{ cliente.email }}</p>
+    </div>
+
+    <h2>Productos Dejados</h2>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>
+                {{ pedido.producto.nombre }} -
+                Cantidad: {{ pedido.cantidad }} -
+                Precio Unitario: ${{ pedido.precio_unitario }} -
+                Total: ${{ pedido.total }}
+                <a href="{% url 'pedido_update' pedido.pk %}" class="btn">Editar</a>
+            </li>
+        {% empty %}
+            <li>No hay productos asociados a este cliente.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="actions">
+        <a href="{% url 'cliente_update' cliente.id %}" class="btn">Editar Cliente</a>
+        <a href="{% url 'cliente_list' %}" class="btn btn-back">Volver a la lista de clientes</a>
+    </div>
+</body>
+</html>
+{% endblock content %}
