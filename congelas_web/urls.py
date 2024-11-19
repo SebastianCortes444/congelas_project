@@ -28,6 +28,12 @@ urlpatterns = [
     # Products
     path('productos/', include('products.urls')),  # Asegúrate de que tu app se llama 'products'
 
+    #Customers
+    path('', include('clientes.urls')),
+
+    #accounts
+    path('accounts/', include('django.contrib.auth.urls')),
+
     # Contact
     path('contacto/', include('contact.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

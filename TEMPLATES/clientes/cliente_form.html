@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if cliente %}Editar Cliente{% else %}Nuevo Cliente{% endif %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #f39c12;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background-color: #e67e22;
+        }
+
+        .productos-list {
+            margin-top: 30px;
+        }
+
+        .productos-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .productos-list li {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .productos-list a {
+            color: #4CAF50;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .productos-list a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p><strong>Bienvenido:</strong> {{ user.username }}</p>
+    </header>
+
+    <h1>{% if cliente %}Editar Cliente{% else %}Nuevo Cliente{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if cliente %}Actualizar{% else %}Crear{% endif %}</button>
+    </form>
+
+    <a href="{% url 'cliente_list' %}" class="back-btn">Volver a la lista</a>
+
+    {% if cliente %}
+        <div class="productos-list">
+            <h2>Productos Dejados por {{ cliente.nombre }}</h2>
+            <ul>
+                {% for pedido in cliente.pedidos.all %}
+                    <li>
+                        {{ pedido.producto.nombre }} -
+                        Cantidad: {{ pedido.cantidad }} -
+                        Precio Unitario: ${{ pedido.precio_unitario }} -
+                        Total: ${{ pedido.total }}
+                        <a href="{% url 'pedido_update' pedido.pk %}">Editar Pedido</a>
+                    </li>
+                {% empty %}
+                    <li>No hay productos asociados a este cliente.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
+{% endblock content %}

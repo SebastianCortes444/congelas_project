@@ -39,9 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third apps
+    'crispy_forms',
+    'crispy_bootstrap5',
+
     'home',
     'products',
     'contact',
+    'clientes',
 ]
 
 MIDDLEWARE = [
@@ -136,11 +141,17 @@ STATIC_ROOT = BASE_DIR / "staticfiles"  # Este es el directorio donde se almacen
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_REDIRECT_URL = 'cliente_list'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Añade una variable para identificar el carrito en la sesión.
 CART_SESSION_ID = 'carrito'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 try:
     from .local_settings import *
 except ImportError:
     print("Looks like no local file, you must be on production")
+
+

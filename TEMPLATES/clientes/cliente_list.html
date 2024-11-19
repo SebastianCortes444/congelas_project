@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .productos-table th, .productos-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .productos-table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        .productos-table th {
+            background-color: #f2f2f2;
+        }
+
+        .acciones a {
+            margin-right: 10px;
+        }
+
+        .productos {
+            padding-left: 20px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .productos-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p><strong>Bienvenido:</strong> {{ user.username }}</p>
+        <!-- Formulario de logout con método POST -->
+        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn">Cerrar sesión</button>
+        </form>
+    </header>
+
+    <h1>Lista de Clientes</h1>
+
+    <div class="btn-container">
+        <a href="{% url 'cliente_create' %}" class="btn">Agregar Cliente</a>
+        <a href="{% url 'pedido_create' %}" class="btn">Agregar Pedido</a>
+        <a href="{% url 'pedido_list' %}" class="btn">Lista de Pedidos</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Tipo de Cliente</th>
+                <th>Productos Dejados</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.id }}</td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>
+                    {% if cliente.tipo_cliente == 'consignacion' %}
+                        <span style="color: #4CAF50; font-weight: bold;">Consignación</span>
+                    {% elif cliente.tipo_cliente == 'venta_paga' %}
+                        <span style="color: #f39c12; font-weight: bold;">Venta por Paga</span>
+                    {% else %}
+                        <span style="color: #e74c3c; font-weight: bold;">Desconocido</span>
+                    {% endif %}
+                </td>
+                <td class="productos">
+                    {% if cliente.pedidos.count > 0 %}
+                    <table class="productos-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pedido in cliente.pedidos.all %}
+                            <tr>
+                                <td>{{ pedido.producto }}</td>
+                                <td>{{ pedido.cantidad }}</td>
+                                <td>${{ pedido.precio_unitario }}</td>
+                                <td>${{ pedido.total }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4">No hay productos asociados a este cliente.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    No hay productos dejados.
+                    {% endif %}
+                </td>
+                <td class="acciones">
+                    <a href="{% url 'cliente_detail' cliente.id %}" class="btn">Ver</a>
+                    <a href="{% url 'cliente_update' cliente.id %}" class="btn">Editar</a>
+                    <a href="{% url 'cliente_delete' cliente.id %}" class="btn" style="background-color: #e74c3c;">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock content %}
