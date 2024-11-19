@@ -153,5 +153,3 @@ try:
     from .local_settings import *
 except ImportError:
     print("Looks like no local file, you must be on production")
-
-
